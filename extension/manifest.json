@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Page Simplifier",
+  "version": "0.1.0",
+  "description": "Transform any webpage into a simplified, AI-structured reading view",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Simplify this page"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["activeTab", "tabs"],
+  "host_permissions": ["http://localhost:3000/*"]
+}
